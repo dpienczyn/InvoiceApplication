@@ -1,0 +1,10 @@
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\obj\Debug\FakturyZakupuMetody.csprojAssemblyReference.cache
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\obj\Debug\FakturyZakupuMetody.Form1.resources
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\obj\Debug\FakturyZakupuMetody.Properties.Resources.resources
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\obj\Debug\FakturyZakupuMetody.csproj.GenerateResource.cache
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\obj\Debug\FakturyZakupuMetody.csproj.CoreCompileInputs.cache
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\bin\Debug\FakturyZakupuMetody.exe.config
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\bin\Debug\FakturyZakupuMetody.exe
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\bin\Debug\FakturyZakupuMetody.pdb
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\obj\Debug\FakturyZakupuMetody.exe
+C:\Users\Dominika\source\repos\FakturyZakupuMetody\FakturyZakupuMetody\obj\Debug\FakturyZakupuMetody.pdb
