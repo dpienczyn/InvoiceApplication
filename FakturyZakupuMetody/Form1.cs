@@ -15,38 +15,9 @@ namespace FakturyZakupuMetody
     public partial class Form1 : Form
     {
 
-        DataBase d = new DataBase();
-
-
-
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         public int Magazyn()
@@ -74,8 +45,7 @@ namespace FakturyZakupuMetody
             return M;
         }
 
-
-
+        
         public void TableDataRow(DataTable dtbl)
         {
             dataGridView1.AutoGenerateColumns = false;
@@ -116,12 +86,6 @@ namespace FakturyZakupuMetody
             dataGridView1.Rows.Clear();
         }
 
-
-        public void ClearDataTable(DataTable dtbl)
-        {
-            dtbl.Clear();
-        }
-
         public string DownloadTimeOne()
         {
             string dataOne = dateTimePicker1.Value.ToString("yyyy-MM-dd");
@@ -138,13 +102,12 @@ namespace FakturyZakupuMetody
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ClearDataGirdViewRows();
             string data_od = DownloadTimeOne();
             string data_do = DownloadTimeTwo();
             int mag_Id = Magazyn();
             DataBase NewDataBase = new DataBase();
             DataTable dtbl = NewDataBase.SelectCommodity(mag_Id, data_od, data_do);
-            //ClearDataTable(dtbl);
-            //ClearDataGirdViewRows();
             TableDataRow(dtbl);
         }
 
@@ -152,17 +115,11 @@ namespace FakturyZakupuMetody
         {
             DataBase datab = new DataBase();
             Writer w = new Writer();
+            w.FileDelete();
             List<int> IDList = Find();
-            //MessageBox.Show(IDList.ToString());
             List<Csv> d = datab.SelectCom(IDList);
-            //w.FileDelete();
             w.WriterHeading(d);
             w.WriterRows(d);
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
