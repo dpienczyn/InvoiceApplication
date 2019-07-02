@@ -17,7 +17,8 @@ namespace FakturyZakupuMetody
 
         DataBase d = new DataBase();
 
-        
+
+
         public Form1()
         {
             InitializeComponent();
@@ -30,7 +31,12 @@ namespace FakturyZakupuMetody
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -68,7 +74,7 @@ namespace FakturyZakupuMetody
             return M;
         }
 
-       
+
 
         public void TableDataRow(DataTable dtbl)
         {
@@ -88,20 +94,21 @@ namespace FakturyZakupuMetody
 
         }
 
-        public void Find()
+        public List<int> Find()
         {
             List<int> IDList = new List<int>();
 
             foreach (DataGridViewRow r in dataGridView1.Rows)
             {
-                
-                    if (Convert.ToBoolean(r.Cells[4].Value) == true)
-                    {
-                        int NumerID_Faktury = Convert.ToInt32(r.Cells[4].Value);
 
-                        IDList.Add(NumerID_Faktury);
-                    }
+                if (Convert.ToBoolean(r.Cells[4].Value) == true)
+                {
+                    int NumerID_Faktury = Convert.ToInt32(r.Cells[4].Value);
+
+                    IDList.Add(NumerID_Faktury);
+                }
             }
+            return IDList;
         }
 
         public void ClearDataGirdViewRows()
@@ -115,5 +122,45 @@ namespace FakturyZakupuMetody
             dtbl.Clear();
         }
 
+        public string DownloadTimeOne()
+        {
+            string dataOne = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+
+            return dataOne;
+        }
+
+        public string DownloadTimeTwo()
+        {
+            string dataTwo = dateTimePicker2.Value.ToString("yyyy-MM-dd");
+
+            return dataTwo;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string data_od = DownloadTimeOne();
+            string data_do = DownloadTimeTwo();
+            int mag_Id = Magazyn();
+            DataBase NewDataBase = new DataBase();
+            DataTable dtbl = NewDataBase.SelectCommodity(mag_Id, data_od, data_do);
+            TableDataRow(dtbl);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DataBase datab = new DataBase();
+            List<int> IDList = Find();
+            List<Csv> d = datab.SelectCom(IDList);
+            Writer w = new Writer();
+            w.WriterHeading(d);
+            w.WriterRows(d);
+
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace FakturyZakupuMetody
         }
 
 
-        public static void WriterRows(List<Csv> d)
+        public void WriterRows(List<Csv> d)
         {
             for (int i = 0; i < d.Count; i++)
             {
