@@ -31,13 +31,12 @@ namespace FakturyZakupuMetody
 
         }
 
-        public static void FileDelete()
+        public void FileDelete()
         {
             if (File.Exists(strFilePath2))
             {
                 File.Delete(strFilePath2);
             }
-            
         }
 
 
@@ -47,11 +46,12 @@ namespace FakturyZakupuMetody
             {
                 using (StreamWriter str = new StreamWriter((strFilePath2), true, System.Text.Encoding.GetEncoding(1252)))
                 {
-                    str.WriteLine(String.Format("{0}; {1}; {2}; {3}; {4};", d[i], d[i], d[i], d[i], d[i]));
+                    str.WriteLine(d);
 
                     str.Close();
                 }
             }
         }
+
     }
 }

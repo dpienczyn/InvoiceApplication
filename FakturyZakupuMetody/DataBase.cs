@@ -39,6 +39,7 @@ namespace FakturyZakupuMetody
                 }
             }
         }
+
         public void DisconnectCBMAX()
         {
             if (this.sqlCon.State == System.Data.ConnectionState.Open)
@@ -69,15 +70,17 @@ namespace FakturyZakupuMetody
                 SqlDataAdapter data = new SqlDataAdapter(cmd);
                 data.Fill(dtbl);
             }
+
+            DisconnectCBMAX();
             return dtbl;
         }
 
         public List<Csv> SelectCom(List<int> IDList)
         {
             this.ConnectCBMAX();
+
             List<Csv> d = new List<Csv>();
-
-
+            
             if (this.sqlCon.State == System.Data.ConnectionState.Open)
             {
                 foreach (int numerId in IDList)
@@ -91,14 +94,41 @@ namespace FakturyZakupuMetody
                         while (reader.Read())
                         {
                             string nazwa = reader.GetString(0);
-                            float objetosc = reader.GetFloat(1);
-                            string procent = reader.GetString(2);
-                            string cn = reader.GetString(3);
-                            int ilosc = reader.GetInt32(4);
+                            decimal objetosc;
+                            string procent;
+                            string cn;
+                            
+                            if (reader.IsDBNull(1))
+                            {
+                                objetosc = 0.00m;
+                            }
+                            else
+                            {
+                                objetosc = reader.GetDecimal(1);
+                            }
+                            if (reader.IsDBNull(2))
+                            {
+                                procent = null;
+                            }
+                            else
+                            {
+                                procent = reader.GetString(2);
+                            }
+                            if (reader.IsDBNull(3))
+                            {
+                                cn = null;
+                            }
+                            else
+                            {
+                                cn = reader.GetString(3);
+                            }
+                            
+                            decimal ilosc = reader.GetDecimal(4);
                             d.Add(new Csv(nazwa, objetosc, procent, cn, ilosc));
                         }
                     }
                 }
+                DisconnectCBMAX();
             }
            return d;
         }

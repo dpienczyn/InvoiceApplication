@@ -103,7 +103,7 @@ namespace FakturyZakupuMetody
 
                 if (Convert.ToBoolean(r.Cells[4].Value) == true)
                 {
-                    int NumerID_Faktury = Convert.ToInt32(r.Cells[4].Value);
+                    int NumerID_Faktury = Convert.ToInt32(r.Cells[0].Value);
 
                     IDList.Add(NumerID_Faktury);
                 }
@@ -143,19 +143,21 @@ namespace FakturyZakupuMetody
             int mag_Id = Magazyn();
             DataBase NewDataBase = new DataBase();
             DataTable dtbl = NewDataBase.SelectCommodity(mag_Id, data_od, data_do);
+            //ClearDataTable(dtbl);
+            //ClearDataGirdViewRows();
             TableDataRow(dtbl);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             DataBase datab = new DataBase();
-            List<int> IDList = Find();
-            List<Csv> d = datab.SelectCom(IDList);
             Writer w = new Writer();
+            List<int> IDList = Find();
+            //MessageBox.Show(IDList.ToString());
+            List<Csv> d = datab.SelectCom(IDList);
+            //w.FileDelete();
             w.WriterHeading(d);
             w.WriterRows(d);
-
-
         }
 
         private void label1_Click(object sender, EventArgs e)

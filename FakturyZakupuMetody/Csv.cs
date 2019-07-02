@@ -10,14 +10,13 @@ namespace FakturyZakupuMetody
     {
         
         private string Nazwa { get; set; }
-        private float Objetosc { get; set; }
+        private decimal Objetosc { get; set; }
         private string Procent { get; set; }
         private string CN { get; set; }
-        private int Ilosc { get; set; }
+        private decimal Ilosc { get; set; }
 
-        public Csv(string nazwa, float objetosc, string procent, string cn, int ilosc)
+        public Csv(string nazwa, decimal objetosc, string procent, string cn, decimal ilosc)
         {
-            
             this.Nazwa = nazwa;
             this.Objetosc = objetosc;
             this.Procent = procent;
