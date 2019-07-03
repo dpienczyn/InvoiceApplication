@@ -80,6 +80,7 @@ namespace FakturyZakupuMetody
             this.ConnectCBMAX();
 
             List<Csv> d = new List<Csv>();
+            Csv Csv = new Csv();
             
             if (this.sqlCon.State == System.Data.ConnectionState.Open)
             {
@@ -97,7 +98,8 @@ namespace FakturyZakupuMetody
                             decimal objetosc;
                             string procent;
                             string cn;
-                            
+                            decimal ilosc;
+
                             if (reader.IsDBNull(1))
                             {
                                 objetosc = 0.00m;
@@ -122,15 +124,27 @@ namespace FakturyZakupuMetody
                             {
                                 cn = reader.GetString(3);
                             }
-                            
-                            decimal ilosc = reader.GetDecimal(4);
-                            d.Add(new Csv(nazwa, objetosc, procent, cn, ilosc));
+                            if (reader.IsDBNull(4))
+                            {
+                                ilosc = 0.00m;
+                            }
+                            else
+                            {
+                                ilosc = reader.GetDecimal(4);
+                            }
+                            Csv.SetNazwa(nazwa);
+                            Csv.SetObjetosc(objetosc);
+                            Csv.SetProcent(procent);
+                            Csv.SetCN(cn);
+                            Csv.SetIlosc(ilosc);
+                            d.Add(Csv);
+                           
                         }
-                    }
+                    }    
                 }
                 DisconnectCBMAX();
             }
-           return d;
+            return d;
         }
     }
 }

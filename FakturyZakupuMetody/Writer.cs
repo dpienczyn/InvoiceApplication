@@ -42,11 +42,11 @@ namespace FakturyZakupuMetody
 
         public void WriterRows(List<Csv> d)
         {
-            for(int i=0; i<d.Count; i++) { 
+            foreach (Csv v in d)
+            {
                 using (StreamWriter str = new StreamWriter((strFilePath2), true, System.Text.Encoding.GetEncoding(1252)))
                 {
-                    
-                    str.WriteLine(d[i]);
+                    str.WriteLine(v.GetNazwa()+";" + v.GetObjetosc()+";"+ v.GetProcent()+";"+ v.GetCN()+";"+v.GetIlosc());
                     str.Close();
                 }
             }

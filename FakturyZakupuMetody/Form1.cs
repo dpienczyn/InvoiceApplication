@@ -74,11 +74,12 @@ namespace FakturyZakupuMetody
                 if (Convert.ToBoolean(r.Cells[4].Value) == true)
                 {
                     int NumerID_Faktury = Convert.ToInt32(r.Cells[0].Value);
-
                     IDList.Add(NumerID_Faktury);
+                    
                 }
             }
             return IDList;
+           
         }
 
         public void ClearDataGirdViewRows()
@@ -89,14 +90,12 @@ namespace FakturyZakupuMetody
         public string DownloadTimeOne()
         {
             string dataOne = dateTimePicker1.Value.ToString("yyyy-MM-dd");
-
             return dataOne;
         }
 
         public string DownloadTimeTwo()
         {
             string dataTwo = dateTimePicker2.Value.ToString("yyyy-MM-dd");
-
             return dataTwo;
         }
 
@@ -118,6 +117,10 @@ namespace FakturyZakupuMetody
             w.FileDelete();
             List<int> IDList = Find();
             List<Csv> d = datab.SelectCom(IDList);
+            foreach(Csv u in d)
+            {
+               MessageBox.Show(u.GetNazwa() + " ");
+            }
             w.WriterHeading(d);
             w.WriterRows(d);
         }

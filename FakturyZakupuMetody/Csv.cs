@@ -15,13 +15,51 @@ namespace FakturyZakupuMetody
         private string CN { get; set; }
         private decimal Ilosc { get; set; }
 
-        public Csv(string nazwa, decimal objetosc, string procent, string cn, decimal ilosc)
+        
+        public void SetNazwa(string nazwa)
         {
             this.Nazwa = nazwa;
+        }
+
+        public void SetObjetosc(decimal objetosc)
+        {
             this.Objetosc = objetosc;
+        }
+
+        public void SetProcent(string procent)
+        {
             this.Procent = procent;
+        }
+
+        public void SetCN(string cn)
+        {
             this.CN = cn;
+        }
+
+        public void SetIlosc(decimal ilosc)
+        {
             this.Ilosc = ilosc;
+        }
+
+        public string GetNazwa()
+        {
+            return this.Nazwa;
+        }
+        public decimal GetObjetosc()
+        {
+            return this.Objetosc;
+        }
+        public string GetProcent()
+        {
+            return this.Procent;
+        }
+        public string GetCN()
+        {
+            return this.CN;
+        }
+        public decimal GetIlosc()
+        {
+            return this.Ilosc;
         }
     }
 }
